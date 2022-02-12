@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=Xray-core
-PKG_VERSION:=1.5.1
-PKG_RELEASE:=2
+PKG_VERSION:=1.5.3
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/XTLS/xray-core/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=11b01de5da7efed2a5f066b14bfe5e0299071dc8c32b7f64af5c51daf3abc6c2
+PKG_HASH:=4b8d78cc20bdf2e8936c02b05d22f0a3231075155ffdc67508d8448ab8858252
 
 PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 PKG_LICENSE:=MPL-2.0
@@ -54,7 +54,7 @@ config XRAY_CORE_COMPRESS_GOPROXY
 config XRAY_CORE_COMPRESS_UPX
 	bool "Compress executable files with UPX"
 	depends on !mips64
-	default y
+	default n
 endmenu
 endef
 
