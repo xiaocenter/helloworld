@@ -462,13 +462,15 @@ o = s:option(Value, "serviceName", translate("gRPC Service Name"))
 o:depends("transport", "grpc")
 o.rmempty = true
 
-if is_installed("sagernet-core") then
+if is_finded("xray") or is_installed("sagernet-core") then
 	-- gPRC模式
 	o = s:option(ListValue, "grpc_mode", translate("gRPC Mode"))
 	o:depends("transport", "grpc")
 	o:value("gun", translate("Gun"))
 	o:value("multi", translate("Multi"))
-	o:value("raw", translate("Raw"))
+	if is_installed("sagernet-core") then
+		o:value("raw", translate("Raw"))
+	end
 	o.rmempty = true
 end
 
@@ -582,7 +584,7 @@ o.default = 2
 o.rmempty = true
 
 o = s:option(Value, "seed", translate("Obfuscate password (optional)"))
-o:depends({v2ray_protocol = "vless", transport = "kcp"})
+o:depends("transport", "kcp")
 o:depends("type", "hysteria")
 o.rmempty = true
 
